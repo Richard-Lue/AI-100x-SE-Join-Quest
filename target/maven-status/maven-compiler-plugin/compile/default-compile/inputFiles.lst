@@ -1,0 +1,12 @@
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/domain/MembershipDiscount.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/domain/ProductPercentageDiscount.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/domain/Discount.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/service/ProductRepository.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/domain/Order.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/domain/BuyNGetOneFreeDiscount.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/domain/OrderItem.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/domain/Product.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/domain/Customer.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/domain/AmountThresholdDiscount.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/service/OrderService.java
+/home/runner/work/AI-100x-SE-Join-Quest/AI-100x-SE-Join-Quest/src/main/java/tw/waterballsa/order/domain/BundleDiscount.java
