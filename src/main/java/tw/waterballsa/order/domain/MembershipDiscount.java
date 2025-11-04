@@ -28,4 +28,15 @@ public class MembershipDiscount extends Discount {
         return originalAmount.multiply(BigDecimal.valueOf(rate))
                 .setScale(0, RoundingMode.HALF_UP);
     }
+
+    @Override
+    public BigDecimal calculateDiscount(Order order, BigDecimal amountAfterPreviousDiscounts) {
+        if (order.getCustomer().getMembershipLevel() != membershipLevel) {
+            return BigDecimal.ZERO;
+        }
+
+        double rate = 1.0 - membershipLevel.getDiscountRate();
+        return amountAfterPreviousDiscounts.multiply(BigDecimal.valueOf(rate))
+                .setScale(0, RoundingMode.HALF_UP);
+    }
 }

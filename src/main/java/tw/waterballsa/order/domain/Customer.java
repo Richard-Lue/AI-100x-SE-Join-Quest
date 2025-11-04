@@ -34,5 +34,12 @@ public class Customer {
         public double getDiscountRate() {
             return discountRate;
         }
+
+        public static MembershipLevel fromString(String level) {
+            if ("VIP".equalsIgnoreCase(level)) {
+                return VIP;
+            }
+            return REGULAR;
+        }
     }
 }

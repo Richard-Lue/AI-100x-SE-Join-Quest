@@ -71,9 +71,7 @@ public class OrderStepDefinitions {
 
     @假設("客戶 {string} 是 {string} 會員，享有 {int} 折優惠")
     public void 客戶是會員享有折扣優惠(String customerName, String memberLevel, int discountPercentage) {
-        Customer.MembershipLevel level = "VIP".equals(memberLevel) 
-                ? Customer.MembershipLevel.VIP 
-                : Customer.MembershipLevel.REGULAR;
+        Customer.MembershipLevel level = Customer.MembershipLevel.fromString(memberLevel);
         currentCustomer = new Customer(customerName, level);
         orderService.addDiscount(new MembershipDiscount(level));
     }

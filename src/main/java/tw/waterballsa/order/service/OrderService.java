@@ -3,10 +3,13 @@ package tw.waterballsa.order.service;
 import tw.waterballsa.order.domain.*;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * OrderService handles order creation and discount calculation.
+ * Note: This service is not thread-safe. Create separate instances for concurrent use.
+ */
 public class OrderService {
     private List<Discount> productDiscounts = new ArrayList<>();
     private List<Discount> orderDiscounts = new ArrayList<>();
@@ -51,23 +54,10 @@ public class OrderService {
         // Calculate amount after product discounts
         BigDecimal amountAfterProductDiscount = originalAmount.subtract(productDiscountAmount);
 
-        // Apply order-level discounts (like membership discount and threshold discount)
-        // For membership discount, apply it to the amount after product discounts
-        BigDecimal orderDiscountAmount = BigDecimal.ZERO;
-        for (Discount discount : orderDiscounts) {
-            if (discount instanceof MembershipDiscount) {
-                MembershipDiscount membershipDiscount = (MembershipDiscount) discount;
-                if (order.getCustomer().getMembershipLevel() == membershipDiscount.getMembershipLevel()) {
-                    double rate = 1.0 - membershipDiscount.getMembershipLevel().getDiscountRate();
-                    orderDiscountAmount = orderDiscountAmount.add(
-                        amountAfterProductDiscount.multiply(BigDecimal.valueOf(rate))
-                            .setScale(0, RoundingMode.HALF_UP)
-                    );
-                }
-            } else {
-                orderDiscountAmount = orderDiscountAmount.add(discount.calculateDiscount(order));
-            }
-        }
+        // Apply order-level discounts on the amount after product discounts
+        BigDecimal orderDiscountAmount = orderDiscounts.stream()
+                .map(discount -> discount.calculateDiscount(order, amountAfterProductDiscount))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         BigDecimal totalDiscount = productDiscountAmount.add(orderDiscountAmount);
         order.setDiscountAmount(totalDiscount);
